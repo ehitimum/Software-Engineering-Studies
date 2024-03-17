@@ -1,5 +1,17 @@
 #include <iostream>
-#include "headerFile/Node.h"
+//#include "headerFile/Node.h"
+using namespace std;
+class Node{
+    public:
+        int data;
+        Node* next;
+        Node* prev;
+        Node(int data){
+            this->data = data;
+            this->next = nullptr;
+            this->prev = nullptr;
+        }
+};
 
 class doublyLinklist{
     private:
@@ -53,9 +65,24 @@ class doublyLinklist{
                 }
                 k++;
             }
-            if(position < k){
+            if(position != k){
                 std::cout << "nullptr" << std::endl;
             }
 
         }
+        void travarse(){
+            Node* current = head;
+            while (current != nullptr) {
+                std::cout << current->data << " -> ";
+                current = current->next;
+            }
+            std::cout << "nullptr" << std::endl;
+        }
 };
+
+int main(){
+    doublyLinklist list;
+    list.insertInHead(1);
+    list.travarse();
+    return 0;
+}
